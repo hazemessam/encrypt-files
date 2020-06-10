@@ -1,4 +1,8 @@
 *.png
 *.jpg
+*.jif
+*.gif
 *.txt
 *.mp4
+*.pdf
+*.exe
