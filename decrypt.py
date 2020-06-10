@@ -1,6 +1,5 @@
 from sys import argv
 from os import remove
-from sys import exit
 
 
 def is_media_based(filename):
