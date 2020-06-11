@@ -1,6 +1,6 @@
 # Encryptit
 Encrypt and Decrypt files.
-'''sh
+```sh
 $ python encrypt.py <filename>
 $ python decrypt.py <en-filename>
-'''
+```
