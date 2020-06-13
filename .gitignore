@@ -7,3 +7,5 @@
 *.pdf
 *.exe
 *.mp3
+.vscode
+test.py

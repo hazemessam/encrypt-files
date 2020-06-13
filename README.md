@@ -1,9 +1,25 @@
 # Encryptit
+
+## Linux or Mac
 Encrypt file:
 ```sh
-$ python encrypt.py <filename>
+$ ./encrypt.py <filename>
 ```
+
 Decrypt file:
 ```sh
-$ python decrypt.py <en-filename>
+$ ./decrypt.py <filename.enc>
+```
+
+---
+
+## Windows
+Encrypt file:
+```cmd
+> encrypt.py <filename>
+```
+
+Decrypt file:
+```cmd
+> decrypt.py <filename.enc>
 ```

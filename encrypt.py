@@ -1,14 +1,16 @@
+#!/bin/python3
 from os import remove
 from sys import argv
 
 
-filename = argv[1]
+src_name = argv[1]
+dest_name = f'{src_name}.enc'
 success = True
 
 try:
     # Encrypt as a text-based file
-    src_file = open(filename, 'r')
-    dest_file = open(f'en-{filename}', 'w')
+    src_file = open(src_name, 'r')
+    dest_file = open(dest_name, 'w')
     for char in src_file.read():
         dest_file.write(chr(ord(str(char)) + 1))
 except:
@@ -21,8 +23,8 @@ if not success:
     success = True
     try:
         # Encrypt as a byte-based file
-        src_file = open(filename, 'rb')
-        dest_file = open(f'en-{filename}', 'wb')
+        src_file = open(src_name, 'rb')
+        dest_file = open(dest_name, 'wb')
         for line in src_file:
             dest_file.write(b'\x0b\n' + line)
     except:
@@ -33,6 +35,6 @@ if not success:
         dest_file.close()
 
 if success:
-    remove(filename)
+    remove(src_name)
 else:
-    remove(f'en-{filename}')
+    remove(dest_name)

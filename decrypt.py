@@ -1,14 +1,16 @@
+#!/bin/python3
 from sys import argv
-from os import remove
+from os import remove, rename
 
 
-filename = argv[1]
+src_name = argv[1]
+dest_name = src_name.split('.enc')[0] if src_name.endswith('.enc') else f'{src_name}.dec'
 success = True
 
 try:
     # Decrypt as a text-based file
-    src_file = open(filename, 'r')
-    dest_file = open(filename[3:], 'w')
+    src_file = open(src_name, 'r')
+    dest_file = open(dest_name, 'w')
     for char in src_file.read():
         dest_file.write(chr(ord(str(char)) - 1))
 except:
@@ -21,8 +23,8 @@ if not success:
     success = True
     try:
         # Decrypt as a byte-based file
-        src_file = open(filename, 'rb')
-        dest_file = open(filename[3:], 'wb')
+        src_file = open(src_name, 'rb')
+        dest_file = open(dest_name, 'wb')
         idx = 0
         for line in src_file:
             if idx % 2 == 1:
@@ -36,6 +38,8 @@ if not success:
         dest_file.close()
 
 if success:
-    remove(filename)
+    remove(src_name)
+    if dest_name.endswith('.dec'):
+        rename(dest_name, dest_name.split('.dec')[0])
 else:
-    remove(filename[3:])
+    remove(dest_name)
